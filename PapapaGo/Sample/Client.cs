@@ -54,6 +54,15 @@ namespace PapapaGo.Sample
             return response.Content;
         }
 
+        public string GetDownload(string onlineId = "OD_Q2M1KDZG3")
+        {
+            ConfirmRequest confirmReqeust = new ConfirmRequest
+            {
+                online_order_id = onlineId
+            };
+            return GetDownload(confirmReqeust);
+        }
+
         public string GetSearch(SearchRequest searchReqeust)
         {
             var dateTime = DateTime.Now.ToUniversalTime();
@@ -122,7 +131,7 @@ namespace PapapaGo.Sample
   }
 ";
 
-            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(string.Format(sample,bookingID));
+            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(string.Format(sample, bookingID));
 
             return PostBook(bookReqeust);
         }
