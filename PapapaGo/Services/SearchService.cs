@@ -39,9 +39,9 @@ namespace PapapaGo.Services
 
             _repository.CreateBiddingAsync(new Models.Bidding.Bidding
             {
-                Name = cityMapping[_model.Name],
+                Name = _model.Name,
                 From = cityMapping[_model.From],
-                To = _model.To,
+                To = cityMapping[_model.To],
                 Amount = _response.order.tickets.First().price.cents,
                 Multiple = _model.Multiple,
                 CreatedTime = DateTime.Now,
