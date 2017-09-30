@@ -16,6 +16,11 @@ namespace PapapaGo.Repositories
             return (await GetListAsync<Bidding>("WHERE 1")).ToList();
         }
 
+        public async Task<List<Bidding>> GetBiddingsAsync(bool isSoldout)
+        {
+            return (await GetListAsync<Bidding>("WHERE IsSoldout = @isSoldout", new {isSoldout})).ToList();
+        }
+
         public async Task<List<Bidding>> GetBiddingsAsync(string name)
         {
             return (await GetListAsync<Bidding>("WHERE Name = @name", new {name})).ToList();

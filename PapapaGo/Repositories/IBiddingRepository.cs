@@ -8,6 +8,8 @@ namespace PapapaGo.Repositories
     {
         Task<List<Bidding>> GetBiddingsAsync();
 
+        Task<List<Bidding>> GetBiddingsAsync(bool isSoldout);
+
         Task<List<Bidding>> GetBiddingsAsync(string name);
 
         Task<int> CreateBiddingAsync(Bidding bidding);
