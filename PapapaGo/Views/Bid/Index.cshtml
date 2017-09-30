@@ -42,12 +42,22 @@
                                             終點站：@item.To
                                         </label>
                                     </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="glyphicon glyphicon-arrow-right"></i>
+                                            車票時間：@item.TrainTime
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group text-left">
-                                    <label class="control-label">價格：@item.Amount </label>
+                                    <label class="control-label">原始價格：@item.Amount </label><br/>
+                                    <label class="control-label">競標倍數：@item.Multiple </label><br />
+                                    <label class="control-label">競標倍數：@item.DisplayAmount </label><br />
                                 </div>
                             </div>
-                            <button onclick="bidConfirm">Buy</button>
+                            <div class="col-sm-2">
+                                <a href="@Url.Action("BuyTicket", "Bid")" class="btn btn-sm btn-primary">Buy</a>
+                            </div>
                         </div>
                     </div>
                 }

@@ -7,3 +7,6 @@ before_build:
   - nuget restore
   
 build: on
+
+test:
+    assemblies: fsharp\test\TypeProvider\bin\Debug\PapapaGo.Tests.dll
