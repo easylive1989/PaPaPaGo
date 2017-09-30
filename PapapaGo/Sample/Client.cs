@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace PapapaGo.Sample
@@ -32,6 +33,55 @@ namespace PapapaGo.Sample
 
             var response = client.Get(request);
             Console.WriteLine(response.Content);
+        }
+
+        public string PostBook()
+        {
+            var sample = @"
+ {
+    'contact': {
+      'name': 'Liping',
+      'email': 'lp@163.com',
+      'phone': '10086',
+      'address': 'beijing',
+      'postcode': '100100'
+    },
+    'passengers': [
+      {
+        'last_name': 'zhang',
+        'first_name': 'san',
+        'birthdate': '1986-09-01',
+        'passport': 'A123456',
+        'email': 'x@a.cn',
+        'phone': '15000367081',
+        'gender': 'male'
+      }
+    ],
+    'sections': [
+      'bc_01'
+    ],
+    'seat_reserved': true
+  }
+";
+
+            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(sample);
+
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, bookReqeust);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+
+            var request = new RestRequest($"/api/v2/online_orders", Method.POST);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(bookReqeust);
+
+            var response = client.Post(request);
+            return response.Content;
         }
     }
 }

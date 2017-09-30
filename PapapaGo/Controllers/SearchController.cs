@@ -10,6 +10,14 @@ namespace PapapaGo.Controllers
 {
     public class SearchController : Controller
     {
+        public ActionResult Book()
+        {
+            var client = new Client();
+
+            ViewBag.Content = client.PostBook();
+            return View();
+        }
+
         // GET: Search
         public ActionResult Index()
         {
