@@ -8,6 +8,3 @@ before_build:
   - nuget restore
   
 build: on
-
-test:
-    assemblies: PaPaPaGo\PapapaGo.Tests\bin\Debug\PapapaGo.Tests.dll
