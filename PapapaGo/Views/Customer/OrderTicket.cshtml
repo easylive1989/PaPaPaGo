@@ -9,7 +9,7 @@
 <body>
     @using (Html.BeginForm())
     {
-        <h3>顧客訂票</h3>
+        <h3>訂票</h3>
         <div class="form-horizontal">
             <div class="form-group">
                 <label for="fromStation" class="col-sm-2 control-label">Origin</label>
@@ -39,7 +39,7 @@
                     <input name="datetime" type="datetime-local" />
                 </div>
             </div>
-            <div id="myRadioGroup">
+            <div id="myRadioGroup" class="form-group">
                 一般訂票<input type="radio" id="normalRadio" name="order" value="1" checked="checked" onclick="javascript:radioCheck();" />
                 拍賣訂票<input type="radio" id="bidRadio" name="order" value="2" onclick="javascript:radioCheck();"/>
                 <div id="normalDiv" class="desc">
