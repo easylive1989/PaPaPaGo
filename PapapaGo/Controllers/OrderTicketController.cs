@@ -13,7 +13,7 @@ namespace PapapaGo.Controllers
             var client = new Client();
             var resp = client.PostBook();
             resp = client.GetAsyncResult(resp);
-            var bookReqeust = JsonConvert.DeserializeObject<BookResponse>(resp);
+            var bookReqeust = JsonConvert.DeserializeObject<BookResponse>(resp.Replace("\n", string.Empty));
             ViewBag.Price = bookReqeust.tickets[0].price.cents;
             return View();
         }
