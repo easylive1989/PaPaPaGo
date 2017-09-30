@@ -16,6 +16,12 @@ namespace PapapaGo.Services
         private IBiddingRepository _repository;
         private ConfirmResponse _response;
 
+        private Dictionary<string, string> cityMapping = new Dictionary<string, string>
+        {
+            { "ST_D8NNN9ZK","Roma Termini" },
+            { "ST_EZVVG1X5","Milano Centrale" },
+        };
+
         public SearchService(SearchModel model)
         {
             model.From = model.From ?? "ST_D8NNN9ZK";
@@ -33,8 +39,8 @@ namespace PapapaGo.Services
 
             _repository.CreateBiddingAsync(new Models.Bidding.Bidding
             {
-                Name = _model.Name,
-                From = _model.From,
+                Name = cityMapping[_model.Name],
+                From = cityMapping[_model.From],
                 To = _model.To,
                 Amount = _response.order.tickets.First().price.cents,
                 Multiple = _model.Multiple,
