@@ -188,6 +188,7 @@
     <Content Include="Views\Customer\BidResult.cshtml" />
     <Content Include="Views\Customer\BookResult.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Bid\SoldOutReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,16 +13,21 @@ namespace PapapaGo.Services
             _BiddingRepository = biddingRepository;
         }
 
-        public List<Bidding> GetBidInfo()
-        {
-            return _BiddingRepository.GetBiddingsAsync(false).Result;
-        }
-
         public bool BuyTicket(int id)
         {
             var ticketInfo = _BiddingRepository.GetBiddingsAsync(id).Result;
             ticketInfo.IsSoldout = true;
             return _BiddingRepository.UpdateBiddingAsync(ticketInfo).Result;
+        }
+
+        public List<Bidding> GetBidInfo()
+        {
+            return _BiddingRepository.GetBiddingsAsync(false).Result;
+        }
+
+        public List<Bidding> GetSoldOutBidInfo()
+        {
+            return _BiddingRepository.GetBiddingsAsync(true).Result;
         }
     }
 }
