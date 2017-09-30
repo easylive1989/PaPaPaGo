@@ -15,6 +15,7 @@ namespace PapapaGo.Models.Bidding
         public string Link { get; set; }
         public string TicketJson { get; set; }
         public DateTime CreatedTime { get; set; }
+        public bool IsSoldout { get; set; }
 
         public Ticket Tickets => JsonConvert.DeserializeObject<Ticket>(TicketJson.Replace("\n", string.Empty));
     }
