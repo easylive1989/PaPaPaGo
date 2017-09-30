@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using PapapaGo.Factories;
 using PapapaGo.Models.Book;
 using PapapaGo.Models.DTO;
 using PapapaGo.Models.Search;
@@ -27,7 +28,7 @@ namespace PapapaGo.Services
             model.From = model.From ?? "ST_D8NNN9ZK";
             model.To = model.To ?? "ST_EZVVG1X5";
             _model = model;
-            _repository = new BiddingRepository(Config.DbConntectionString);
+            _repository = RepositoryFactory.GetBiddingRepository();
         }
 
         public string GetTicket()
