@@ -1,0 +1,72 @@
+﻿@model List<PapapaGo.Models.Bidding.Bidding>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bid Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body style="background-image:url(http://s.hswstatic.com/gif/money-world-orig.jpg)">
+    <table style="background-color:mediumpurple;font-size:xx-large;color:white"  width="100%" >
+        <tr>
+            <td>Report</td>
+        </tr>
+        <tr>
+            <td>實賺總金額: @Model.Sum(x => x.MakeMoney)</td>
+        </tr>
+    </table>
+
+    @*<h3 style="color:white;">Report</h3>
+    <h4 style="color:white;">實賺總金額: @Model.Sum(x => x.MakeMoney)</h4>*@
+    <form id="bidForm">
+        <div class="panel panel-info">
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="panel-heading">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    @item.Name
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label>啟程站：@item.From</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="glyphicon glyphicon-arrow-right"></i>
+                                            終點站：@item.To
+                                        </label>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label>
+                                            車票時間：@item.TrainTime
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group text-left">
+                                    <label class="control-label">原始價格：@item.Amount </label><br />
+                                    <label class="control-label">競標倍數：@item.Multiple </label><br />
+                                    <label class="control-label">實際金額：@item.DisplayAmount </label><br />
+                                    <label class="control-label">讚嘆師父：@(item.DisplayAmount - item.MakeMoney) </label><br />
+                                    <label class="control-label">實賺金額：@item.MakeMoney </label><br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </form>
+</body>
+</html>

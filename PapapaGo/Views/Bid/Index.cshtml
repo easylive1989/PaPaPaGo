@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body"  id ="@item.Id">
                     <div class="row">
                         <div class="col-md-5 col-md-offset-1">
                             <div class="form-inline">
@@ -70,9 +70,11 @@
                 $.ajax({
                     url: "/Bid/BuyTicket",
                     data: { id: ticketId },
-                    success: function () {
-                        window.location.reload();
-                        alert("Success");
+                    success: function (link) {
+                        var newParagraph = document.createElement('a');
+                        newParagraph.href = link;
+                        newParagraph.innerHTML = "Congratulation. Booking successed. Please click to dowload ticket.";
+                        document.getElementById(ticketId).appendChild(newParagraph);
                     },
                     error: function(){
                         alert("Fail");
