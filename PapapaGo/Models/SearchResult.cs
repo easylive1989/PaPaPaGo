@@ -26,7 +26,7 @@ public class Service
     public string description { get; set; }
     public string detail { get; set; }
     public Available available { get; set; }
-    public Price price { get; set; }
+    public BaseResponse.Price price { get; set; }
     public string booking_code { get; set; }
 }
 
@@ -43,8 +43,8 @@ public class Train
 {
     public string number { get; set; }
     public string type { get; set; }
-    public From2 from { get; set; }
-    public To2 to { get; set; }
+    public BaseResponse.From2 from { get; set; }
+    public BaseResponse.To2 to { get; set; }
     public DateTime departure { get; set; }
     public DateTime arrival { get; set; }
 }
@@ -57,8 +57,8 @@ public class Section
 
 public class Solution
 {
-    public From from { get; set; }
-    public To to { get; set; }
+    public BaseResponse.From from { get; set; }
+    public BaseResponse.To to { get; set; }
     public DateTime departure { get; set; }
     public Duration duration { get; set; }
     public int transfer_times { get; set; }

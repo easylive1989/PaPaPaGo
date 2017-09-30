@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PapapaGo.Models
+namespace PapapaGo.Models.Search
 {
     public class Railway
     {
@@ -36,25 +36,7 @@ namespace PapapaGo.Models
         public string currency { get; set; }
         public int cents { get; set; }
     }
-
-    public class Service
-    {
-        public string code { get; set; }
-        public string description { get; set; }
-        public string detail { get; set; }
-        public Available available { get; set; }
-        public Price price { get; set; }
-        public string booking_code { get; set; }
-    }
-
-    public class Offer
-    {
-        public string code { get; set; }
-        public string description { get; set; }
-        public string detail { get; set; }
-        public List<Service> services { get; set; }
-    }
-
+    
     public class From2
     {
         public string code { get; set; }

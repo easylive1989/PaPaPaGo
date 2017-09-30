@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace PapapaGo.Models
+namespace PapapaGo.Models.Book
 {
     public class BookResponse : BaseResponse
     {
@@ -19,6 +21,23 @@ namespace PapapaGo.Models
         public List<Passenger> passengers { get; set; }
         public List<Ticket> tickets { get; set; }
         public List<Record> records { get; set; }
+    }
+
+    public class Railway
+    {
+        public string code { get; set; }
+    }
+
+    public class From
+    {
+        public string code { get; set; }
+        public string name { get; set; }
+    }
+
+    public class To
+    {
+        public string code { get; set; }
+        public string name { get; set; }
     }
 
     public class TicketPrice
@@ -62,12 +81,30 @@ namespace PapapaGo.Models
         public string gender { get; set; }
     }
 
+    public class From2
+    {
+        public string code { get; set; }
+        public string name { get; set; }
+    }
+
+    public class To2
+    {
+        public string code { get; set; }
+        public string name { get; set; }
+    }
+
+    public class Price
+    {
+        public string currency { get; set; }
+        public int cents { get; set; }
+    }
+
     public class Ticket
     {
         public string id { get; set; }
-        public BaseResponse.From2 from { get; set; }
-        public BaseResponse.To2 to { get; set; }
-        public BaseResponse.Price price { get; set; }
+        public From2 from { get; set; }
+        public To2 to { get; set; }
+        public Price price { get; set; }
     }
 
     public class Amount
