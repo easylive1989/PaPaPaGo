@@ -161,6 +161,7 @@
     <Compile Include="Sample\Client.cs" />
     <Compile Include="Sample\RequestBase.cs" />
     <Compile Include="Sample\SearchRequest.cs" />
+    <Compile Include="Services\BidService.cs" />
     <Compile Include="Services\SearchService.cs" />
   </ItemGroup>
   <ItemGroup>
