@@ -11,28 +11,15 @@ namespace PapapaGo.Controllers
         // GET: OrderTicket
         public ActionResult Index()
         {
-            //var client = new Client();
-            //var resp = client.PostBook();
-            //resp = client.GetAsyncResult(resp);
-            //var bookReqeust = JsonConvert.DeserializeObject<BookResponse>(resp.Replace("\n", string.Empty));
-            //ViewBag.Price = bookReqeust.tickets[0].price.cents;
             return View();
         }
 
         public ActionResult BookResult()
         {
             var service = new SearchService();
-            var key = service.GetBookingKey();
-            var id = service.GetBookingResult(key);
-            var model = service.GetConfirmResult(id);
+            ViewBag.id = service.GetTicket();
 
-            
-            //var client = new Client();
-            //var resp = client.PostBook();
-            //resp = client.GetAsyncResult(resp);
-            //var bookReqeust = JsonConvert.DeserializeObject<BookResponse>(resp);
-            //ViewBag.Price = bookReqeust.tickets[0].price.cents;
-            return View(model);
+            return View();
         }
     }
 }
