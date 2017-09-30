@@ -1,6 +1,6 @@
 # PaPaPaGo  
 
-<img src="https://ci.appveyor.com/api/projects/status/9nmm7igxo7lafu2i?svg=true" />  
+<img src="https://ci.appveyor.com/api/projects/status/77unc1musgk2qx10?svg=true" />  
 
 
 Lonely Team's product
