@@ -15,12 +15,10 @@ namespace ApiTest
             var client = new Client();
             var result = client.GetSearch();
             Console.WriteLine(result);
-            Thread.Sleep(10000);
             Console.WriteLine(client.GetAsyncResult(result));
 
             result = client.PostConfirm();
             Console.WriteLine(result);
-            Thread.Sleep(10000);
             Console.WriteLine(client.GetAsyncResult(result));
 
             Console.ReadLine();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -21,8 +22,19 @@ namespace PapapaGo.Sample
             request.AddHeader("Date", dateTime.ToString("r"));
             request.AddHeader("Authorization", signature);
 
-            var response = client.Get(request);
-            return response.Content;
+            var response = string.Empty;
+            for (var second = 0; second < 60; second++)
+            {
+                var res = client.Get(request);
+                if (!res.Content.Contains("not ready"))
+                {
+                    response = res.Content;
+                    break;
+                }
+                Thread.Sleep(1000);
+            }
+
+            return response;
         }
 
         public string GetSearch(SearchRequest searchReqeust)
