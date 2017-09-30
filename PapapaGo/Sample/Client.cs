@@ -99,13 +99,13 @@ namespace PapapaGo.Sample
       }
     ],
     'sections': [
-      '{0}'
+      '_{0}_'
     ],
     'seat_reserved': true
   }
 ";
 
-            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(string.Format(sample,bookingID));
+            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(sample.Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("_{0}_", bookingID));
 
             return PostBook(bookReqeust);
         }
