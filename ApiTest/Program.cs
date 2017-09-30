@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using PapapaGo.Sample;
+using PapapaGo.Services;
 
 namespace ApiTest
 {
@@ -12,14 +13,8 @@ namespace ApiTest
     {
         private static void Main(string[] args)
         {
-            var client = new Client();
-            var result = client.GetSearch();
-            Console.WriteLine(result);
-            Console.WriteLine(client.GetAsyncResult(result));
-
-            result = client.PostConfirm();
-            Console.WriteLine(result);
-            Console.WriteLine(client.GetAsyncResult(result));
+            var service = new SearchService();
+            Console.WriteLine(service.GetTicket());
 
             Console.ReadLine();
         }

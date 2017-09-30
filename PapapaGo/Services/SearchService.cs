@@ -24,7 +24,7 @@ namespace PapapaGo.Services
             var client = new Client();
             var key = client.PostBook(bookingID);
             var result = client.GetAsyncResult(key);
-            var bookResult = JsonConvert.DeserializeObject<List<BookResponse>>(result).FirstOrDefault();
+            var bookResult = JsonConvert.DeserializeObject<BookResponse>(result);
             return bookResult.id;
         }
 
@@ -33,16 +33,18 @@ namespace PapapaGo.Services
             var client = new Client();
             var key = client.PostConfirm(onlineId);
             var result = client.GetAsyncResult(key);
-            var confirmResponse = JsonConvert.DeserializeObject<List<ConfirmResponse>>(result).FirstOrDefault();
+            var confirmResponse = JsonConvert.DeserializeObject<ConfirmResponse>(result);
             return confirmResponse.id;
         }
 
         public string GetDownloadResult(string onlineId)
         {
-            var client = new Client();
-            var key = client.GetDownload(onlineId);
-            var result = client.GetAsyncResult(key);
-            return result;
+            return onlineId;
+
+            //var client = new Client();
+            //var key = client.GetDownload(onlineId);
+            //var result = client.GetAsyncResult(key);
+            //return onlineId;
         }
 
         public string GetTicket()
