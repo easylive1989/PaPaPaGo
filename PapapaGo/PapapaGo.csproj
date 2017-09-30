@@ -142,6 +142,7 @@
     </Compile>
     <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\Bidding\Bidding.cs" />
+    <Compile Include="Models\Bidding\Ticket.cs" />
     <Compile Include="Models\Book\BookResponse.cs" />
     <Compile Include="Models\Search\Search.cs" />
     <Compile Include="Models\Search\SearchResult.cs" />
