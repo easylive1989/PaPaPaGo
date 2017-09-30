@@ -45,7 +45,7 @@ namespace PapapaGo.Sample
 
             var client = new RestClient(Config.GrailTravelHost);
             Console.WriteLine(downloadReqeust.GetURL());
-            var request = new RestRequest($"/v2/online_orders/{downloadReqeust.online_order_id}/online_tickets", Method.GET);
+            var request = new RestRequest($"/api/v2/online_orders/{downloadReqeust.online_order_id}/online_tickets?online_order_id={downloadReqeust.online_order_id}", Method.GET);
             request.AddHeader("From", Config.ApiKey);
             request.AddHeader("Date", dateTime.ToString("r"));
             request.AddHeader("Authorization", signature);
@@ -86,7 +86,7 @@ namespace PapapaGo.Sample
             {
                 StartStationCode = "ST_D8NNN9ZK",
                 DestinationStationCode = "ST_EZVVG1X5",
-                StartTime = DateTime.Now.AddDays(20),
+                StartTime = new DateTime(2017, 10, 18, 7, 30, 0),
                 NumberOfAdult = 2,
                 NumberOfChildren = 0
             };

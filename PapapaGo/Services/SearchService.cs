@@ -15,7 +15,8 @@ namespace PapapaGo.Services
             var key = client.GetSearch();
             var result = client.GetAsyncResult(key);
 
-            var searchResult = JsonConvert.DeserializeObject<List<SearchResponse>>(result).FirstOrDefault();
+            var searchResult = JsonConvert.DeserializeObject<List<SearchResponse>>(result).FirstOrDefault(x => x.railway.code == "FB");
+
             return searchResult.solutions[0].sections[0].offers[0].services[0].booking_code;
         }
 
@@ -34,17 +35,14 @@ namespace PapapaGo.Services
             var key = client.PostConfirm(onlineId);
             var result = client.GetAsyncResult(key);
             var confirmResponse = JsonConvert.DeserializeObject<ConfirmResponse>(result);
-            return confirmResponse.id;
+            return confirmResponse.order.id;
         }
 
         public string GetDownloadResult(string onlineId)
         {
-            return onlineId;
-
-            //var client = new Client();
-            //var key = client.GetDownload(onlineId);
-            //var result = client.GetAsyncResult(key);
-            //return onlineId;
+            var client = new Client();
+            var key = client.GetDownload(onlineId);
+            return key;
         }
 
         public string GetTicket()
