@@ -18,6 +18,11 @@ namespace ApiTest
             Thread.Sleep(10000);
             Console.WriteLine(client.GetAsyncResult(result));
 
+            result = client.PostConfirm();
+            Console.WriteLine(result);
+            Thread.Sleep(10000);
+            Console.WriteLine(client.GetAsyncResult(result));
+
             Console.ReadLine();
         }
     }

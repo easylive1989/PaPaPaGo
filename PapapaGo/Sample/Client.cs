@@ -108,5 +108,34 @@ namespace PapapaGo.Sample
             var response = client.Post(request);
             return response.Content;
         }
+
+        public string PostConfirm()
+        {
+            ConfirmRequest confirmReqeust = new ConfirmRequest
+            {
+                online_order_id = "OD_Q2M1KDZG3"
+            };
+            return PostConfirm(confirmReqeust);
+        }
+
+        public string PostConfirm(ConfirmRequest confirmReqeust)
+        {
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, confirmReqeust);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+            Console.WriteLine(confirmReqeust.GetURL());
+            var request = new RestRequest($"/api/v2/online_orders/{confirmReqeust.online_order_id}/online_confirmations", Method.POST);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(confirmReqeust);
+
+            var response = client.Post(request);
+            return response.Content;
+        }
     }
 }
