@@ -9,4 +9,4 @@ before_build:
 build: on
 
 test:
-    assemblies: fsharp\test\TypeProvider\bin\Debug\PapapaGo.Tests.dll
+    assemblies: PaPaPaGo\PapapaGo.Tests\bin\Debug\PapapaGo.Tests.dll
