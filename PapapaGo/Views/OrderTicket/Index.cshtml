@@ -7,8 +7,9 @@
     <title>OrderTicket</title>
 </head>
 <body>
-    <h3>顧客訂票</h3>
-    <form id="orderForm" class="form-horizontal">
+    @using (Html.BeginForm("Book", "OrderTicket", FormMethod.Post))
+    {
+        <h3>顧客訂票</h3>
         <div class="form-group">
             <label for="fromStation" class="col-sm-2 control-label">Origin</label>
             <div class="col-sm-10">
@@ -34,9 +35,10 @@
         <div class="form-group">
             <label for="oneTicket" class="col-sm-3 control-label">2,000 €</label>
             <div class="col-sm-2">
-                <button type="submit" class="btn btn-sm btn-primary">拍　賣</button>
+                <button type="submit" class="btn btn-sm btn-primary">拍 賣</button>
             </div>
         </div>
-    </form>
+    }
+
 </body>
 </html>
