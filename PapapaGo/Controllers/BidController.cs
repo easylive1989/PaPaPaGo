@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using PapapaGo.Factories;
 using PapapaGo.Services;
 
@@ -16,11 +18,11 @@ namespace PapapaGo.Controllers
             return View(biddingTickets);
         }
 
-        public bool BuyTicket(int id)
+        public string BuyTicket(int id)
         {
-            var isSuccess = _BidService.BuyTicket(id);
             var biddingTickets = _BidService.GetBidInfo();
-            return isSuccess;
+            _BidService.BuyTicket(id);
+            return biddingTickets.Where(x=>x.Id == id).Select(y=>y.Tickets.Links[1]).FirstOrDefault();
         }
     }
 }
