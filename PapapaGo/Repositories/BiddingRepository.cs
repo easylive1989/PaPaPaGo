@@ -18,7 +18,7 @@ namespace PapapaGo.Repositories
 
         public async Task<Bidding> GetBiddingsAsync(int id)
         {
-            return (await GetListAsync<Bidding>("WHERE id = @id", new {id})).FirstOrDefault();
+            return (await GetListAsync<Bidding>("WHERE Id = @id", new {id})).FirstOrDefault();
         }
 
         public async Task<List<Bidding>> GetBiddingsAsync(bool isSoldout)
