@@ -14,15 +14,23 @@ namespace ApiTest
     {
         private static void Main(string[] args)
         {
-            var service = new SearchService(new SearchModel
+            var names = new [] {"Ethan Li", "Eviler", "Eric Lin", "Jean Lin", "Paul Wu", "James", "Kyo Lai", "Michelle Pig", "Leo Chiang", "Adriannie"};
+            Task[] tasks = new Task[10];
+            for (var i = 0; i < 10; i++)
             {
-                Name = "XX",
-                Multiple = 2,
-                Link = "http://facebook.com",
-                Time = new DateTime(2017, 10, 18, 7, 30, 0)
-            });
-            Console.WriteLine(service.GetTicket());
-
+                var idx = i;
+                tasks[idx] = Task.Factory.StartNew(() =>
+                {
+                    var service = new SearchService(new SearchModel
+                    {
+                        Name = names[idx],
+                        Multiple = 5,
+                        Link = "http://facebook.com",
+                        Time = new DateTime(2017, 10, 18, 7, 30, 0)
+                    });
+                });
+            }
+            Task.WaitAll(tasks);
             Console.ReadLine();
         }
     }
