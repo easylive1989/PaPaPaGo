@@ -25,6 +25,15 @@ namespace PapapaGo.Models.Bidding
             }
         }
 
+        public string From { get; set; }
+
+        [Key]
+        public int Id { get; set; }
+
+        public bool IsSoldout { get; set; }
+
+        public string Link { get; set; }
+
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
@@ -32,21 +41,14 @@ namespace PapapaGo.Models.Bidding
         {
             get
             {
-                return new decimal(Multiple * Amount) / 100;
+                return new decimal(Multiple * Amount) / 10;
             }
         }
 
-        public string From { get; set; }
-
-        [Key]
-        public int Id { get; set; }
-
-        public bool IsSoldout { get; set; }
-        public string Link { get; set; }
         public int Multiple { get; set; }
         public string Name { get; set; }
         public string TicketJson { get; set; }
-        public Ticket Tickets => new Ticket{Links = JsonConvert.DeserializeObject<List<string>>(TicketJson)};
+        public Ticket Tickets => new Ticket { Links = JsonConvert.DeserializeObject<List<string>>(TicketJson) };
         public string To { get; set; }
         public string TrainTime { get; set; }
     }
