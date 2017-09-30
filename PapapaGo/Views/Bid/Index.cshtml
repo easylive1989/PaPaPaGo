@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <h3>競標訂票</h3>
+    <h3>競標</h3>
     <div class="panel panel-info">
         @{
             foreach (var item in Model)
@@ -49,12 +49,11 @@
                                 </div>
                             </div>
                             <div class="form-group text-left">
-                                <label class="control-label">原始價格：@item.Amount Euro</label><br/>
+                                <label class="control-label">原始價格：@item.Amount </label><br/>
                                 <label class="control-label">競標倍數：@item.Multiple </label><br />
-                                <label class="control-label">實際金額：@item.DisplayAmount Euro</label><br />
+                                <label class="control-label">實際金額：@item.DisplayAmount </label><br />
                             </div>
                         </div>
-
                         <div class="col-sm-2">
                             <button onclick="bidConfirm(@item.Id)" class="btn btn-sm btn-primary">Buy</button>
                         </div>
@@ -74,7 +73,6 @@
                     success: function (link) {
                         var newParagraph = document.createElement('a');
                         newParagraph.href = link;
-                        newParagraph.target = "_blank";
                         newParagraph.innerHTML = "Congratulation. Booking successed. Please click to dowload ticket.";
                         document.getElementById(ticketId).appendChild(newParagraph);
                     },

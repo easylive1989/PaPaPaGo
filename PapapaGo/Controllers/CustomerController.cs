@@ -2,8 +2,6 @@
 using System.Web.Mvc;
 using PapapaGo.Models.DTO;
 using PapapaGo.Services;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace PapapaGo.Controllers
 {
@@ -24,9 +22,7 @@ namespace PapapaGo.Controllers
             searchModel.Link = fblink;
             searchModel.Multiple = priceSelect;
             var service = new SearchService(searchModel);
-            var ticket = JsonConvert.DeserializeObject<List<string>>(service.GetTicket());
-            ViewBag.Id = ticket[0];
-
+            ViewBag.Id = service.GetTicket();
             return View();
         }
 
