@@ -8,7 +8,13 @@ namespace PapapaGo.Models.Bidding
     [Table("bidding")]
     public class Bidding
     {
-        public int Amount { get; set; }
+        private decimal _Amount;
+
+        public decimal Amount
+        {
+            get => _Amount / 100;
+            set => _Amount = value;
+        }
 
         public string BookingCode { get; set; }
 
@@ -17,7 +23,7 @@ namespace PapapaGo.Models.Bidding
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
-        public int DisplayAmount => Multiple * Amount;
+        public decimal DisplayAmount => Multiple * Amount;
 
         public string From { get; set; }
 
@@ -31,8 +37,7 @@ namespace PapapaGo.Models.Bidding
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
-        public decimal MakeMoney => new decimal(Multiple * Amount) / 10;
-
+        public decimal MakeMoney => Multiple * Amount / 10;
         public int Multiple { get; set; }
         public string Name { get; set; }
         public string TicketJson { get; set; }
