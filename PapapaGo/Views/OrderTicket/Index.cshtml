@@ -7,44 +7,36 @@
     <title>OrderTicket</title>
 </head>
 <body>
-    <div>
-        <form id="orderForm">
-            <table>
-                <tr>
-                    <td>
-                        <label>Origin:</label>
-                    </td>
-                    <td>
-                        <select id="oriSelect">
-                            <option value="ST_D8NNN9ZK">Roma Termini</option>
-                        </select>
-                    </td>
-                    <br />
-                <tr>
-                    <td>
-                        <label>Destination:</label>
-                    </td>
-                    <td>
-                        <select id="desSelect">
-                            <option value="ST_EZVVG1X5">Milano Centrale</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit">2</button>
-                    </td>
-                    <td>@ViewBag.Price</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit">auction</button>
-                    </td>
-                    <td>@ViewBag.Price</td>
-                </tr>
-            </table>
-        </form>
-
-    </div>
+    <h3>顧客訂票</h3>
+    <form id="orderForm" class="form-horizontal">
+        <div class="form-group">
+            <label for="fromStation" class="col-sm-2 control-label">Origin</label>
+            <div class="col-sm-10">
+                <select id="oriSelect">
+                    <option value="ST_D8NNN9ZK">Roma Termini</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="destination" class="col-sm-2 control-label">Destination</label>
+            <div class="col-sm-10">
+                <select id="desSelect">
+                    <option value="ST_EZVVG1X5">Milano Centrale</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="oneTicket" class="col-sm-3 control-label">2,000 €</label>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-sm btn-primary">兩張票</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="oneTicket" class="col-sm-3 control-label">2,000 €</label>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-sm btn-primary">拍　賣</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
