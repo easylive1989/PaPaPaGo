@@ -6,6 +6,20 @@ using Newtonsoft.Json;
 
 namespace PapapaGo.Sample
 {
+    public class AsyncRequest : RequestBase
+    {
+        public string async { private get; set; }
+
+        [JsonProperty("async_key")]
+        public string async_key
+        {
+            get
+            {
+                return async;
+            }
+        }
+    }
+
     public class SearchRequest : RequestBase
     {
         [JsonProperty("to")]
