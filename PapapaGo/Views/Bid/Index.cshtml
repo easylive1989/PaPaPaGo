@@ -14,7 +14,12 @@
             @{
                 foreach (var item in Model)
                 {
+                    var imgSrc = "http://graph.facebook.com/" + item.Link + "/picture?type=normal";
                     <div class="panel-heading">
+                        <div>
+                            <img src=imgSrc/>
+                        </div>
+
                         <div class="form-inline">
                             <div class="form-group">
                                 <label class="control-label">
