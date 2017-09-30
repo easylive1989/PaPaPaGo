@@ -10,7 +10,7 @@ namespace PapapaGo.Services
         public List<Bidding> GetBidInfo()
         {
             var bidRepo = new BiddingRepository(Config.DbConntectionString);
-            return new List<Bidding>();
+            return bidRepo.GetBiddingsAsync().Result;
         }
     }
 }

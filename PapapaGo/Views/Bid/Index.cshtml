@@ -18,7 +18,7 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <label class="control-label">
-                                    <i class="glyphicon glyphicon-user"></i>@item.Name
+                                    <i class="glyphicon glyphicon-user"></i>@{ item.Name ?? "Seafood"}
                                 </label>
                             </div>
                         </div>
@@ -28,17 +28,17 @@
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <label>啟程站：@item.From</label>
+                                        <label>啟程站：@{item.From ?? "Berlin"}</label>
                                     </div>
                                     <div class="form-group">
                                         <label>
                                             <i class="glyphicon glyphicon-arrow-right"></i>
-                                            終點站：@item.To
+                                            終點站：@{item.To ?? "Munich"}
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
-                                    <label class="control-label">價格：@item.Amount</label>
+                                    <label class="control-label">價格：@item.Amount </label>
                                 </div>
                             </div>
                         </div>
