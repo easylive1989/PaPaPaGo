@@ -28,6 +28,7 @@ namespace ApiTest
                         Link = "http://facebook.com",
                         Time = new DateTime(2017, 10, 18, 7, 30, 0)
                     });
+                    service.GetTicket();
                 });
             }
             Task.WaitAll(tasks);

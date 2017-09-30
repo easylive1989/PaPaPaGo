@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
+using PapapaGo.Factories;
 using PapapaGo.Services;
 
 namespace PapapaGo.Controllers
 {
     public class BidController : Controller
     {
-        private BidService _BidService = new BidService();
+        private readonly BidService _BidService = new BidService(RepositoryFactory.GetBiddingRepository());
 
         // GET: Bid
         public ActionResult Index(string oriSelect, string desSelect, string username, string datetime, string fblink, string priceSelect)
