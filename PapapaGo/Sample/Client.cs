@@ -16,7 +16,7 @@ namespace PapapaGo.Sample
 
             var client = new RestClient(Config.GrailTravelHost);
 
-            var request = new RestRequest($"/api/v2/async_results/{aysncrequest.GetURL()}", Method.GET);
+            var request = new RestRequest($"/api/v2/async_results/{aysncrequest.async_key}", Method.GET);
             request.AddHeader("From", Config.ApiKey);
             request.AddHeader("Date", dateTime.ToString("r"));
             request.AddHeader("Authorization", signature);
@@ -78,7 +78,7 @@ namespace PapapaGo.Sample
       }
     ],
     'sections': [
-      'bc_01'
+      'P_4SDF5P'
     ],
     'seat_reserved': true
   }
