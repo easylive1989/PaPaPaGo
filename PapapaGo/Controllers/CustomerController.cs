@@ -30,5 +30,19 @@ namespace PapapaGo.Controllers
             ViewBag.Id = service.GetTicket();
             return View();
         }
+
+        public ActionResult BookResult(string oriSelect, string desSelect, string username, DateTime datetime, string fblink, int priceSelect)
+        {
+            var searchModel = new SearchModel();
+            searchModel.From = oriSelect;
+            searchModel.To = desSelect;
+            searchModel.Name = username;
+            searchModel.Time = datetime;
+            searchModel.Link = fblink;
+            searchModel.Multiple = priceSelect;
+            var service = new SearchService(searchModel);
+            ViewBag.Id = service.GetTicket();
+            return View();
+        }
     }
 }
