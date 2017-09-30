@@ -17,6 +17,7 @@ namespace PapapaGo.Models.Bidding
         public string BookingCode { get; set; }
         public string Link { get; set; }
         public string TicketJson { get; set; }
+        public string TrainTime { get; set; }
         public DateTime CreatedTime { get; set; }
         public bool IsSoldout { get; set; }
 
