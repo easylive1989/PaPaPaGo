@@ -41,6 +41,7 @@ namespace PapapaGo.Sample
     [Table("booking")]
     public class Booking
     {
+        public string order_id { get; set; }
         public string email { get; set; }
         public string first_name { get; set; }
         public string gender { get; set; }
