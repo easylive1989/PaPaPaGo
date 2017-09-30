@@ -42,9 +42,9 @@
                                             終點站：@item.To
                                         </label>
                                     </div>
+                                    <br/>
                                     <div class="form-group">
                                         <label>
-                                            <i class="glyphicon glyphicon-arrow-right"></i>
                                             車票時間：@item.TrainTime
                                         </label>
                                     </div>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                <a href="@Url.Action("BuyTicket", "Bid")" class="btn btn-sm btn-primary">Buy</a>
+                                <a href="@Url.Action("BuyTicket", "Bid",new{id = @item.Id})" class="btn btn-sm btn-primary">Buy</a>
                             </div>
                         </div>
                     </div>
