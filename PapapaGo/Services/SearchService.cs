@@ -9,7 +9,15 @@ namespace PapapaGo.Services
 {
     public class SearchService
     {
-        public string GetBookingKey()
+        public string GetTicket()
+        {
+            var bookId = GetBookingKey();
+            var onlineOrderId = GetBookingResult(bookId);
+            var confirmId = GetConfirmResult(onlineOrderId);
+            return GetDownloadResult(confirmId);
+        }
+
+        private string GetBookingKey()
         {
             var client = new Client();
             var key = client.GetSearch();
@@ -20,7 +28,7 @@ namespace PapapaGo.Services
             return searchResult.solutions[0].sections[0].offers[0].services[0].booking_code;
         }
 
-        public string GetBookingResult(string bookingID)
+        private string GetBookingResult(string bookingID)
         {
             var client = new Client();
             var key = client.PostBook(bookingID);
@@ -29,7 +37,7 @@ namespace PapapaGo.Services
             return bookResult.id;
         }
 
-        public string GetConfirmResult(string onlineId)
+        private string GetConfirmResult(string onlineId)
         {
             var client = new Client();
             var key = client.PostConfirm(onlineId);
@@ -38,19 +46,11 @@ namespace PapapaGo.Services
             return confirmResponse.order.id;
         }
 
-        public string GetDownloadResult(string onlineId)
+        private string GetDownloadResult(string onlineId)
         {
             var client = new Client();
             var key = client.GetDownload(onlineId);
             return key;
-        }
-
-        public string GetTicket()
-        {
-            var bookId = GetBookingKey();
-            var onlineOrderId = GetBookingResult(bookId);
-            var confirmId = GetConfirmResult(onlineOrderId);
-            return GetDownloadResult(confirmId);
         }
     }
 }
