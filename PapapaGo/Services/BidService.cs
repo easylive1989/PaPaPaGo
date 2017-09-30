@@ -2,6 +2,7 @@
 using PapapaGo.Models.Bidding;
 using PapapaGo.Repositories;
 using PapapaGo.Sample;
+using System.Linq;
 
 namespace PapapaGo.Services
 {

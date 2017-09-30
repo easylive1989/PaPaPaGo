@@ -47,7 +47,9 @@
                                     <label class="control-label">價格：@item.Amount </label>
                                 </div>
                             </div>
-                            <button onclick="bidConfirm">Buy</button>
+                            <div class="col-sm-2">
+                                <a href="@Url.Action("BuyTicket", "Bid")" class="btn btn-sm btn-primary">Buy</a>
+                            </div>
                         </div>
                     </div>
                 }
