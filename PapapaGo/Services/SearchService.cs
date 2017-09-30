@@ -21,29 +21,36 @@ namespace PapapaGo.Services
 
         public string GetBookingResult(string bookingID)
         {
-            var client =new Client();
+            var client = new Client();
             var key = client.PostBook(bookingID);
             var result = client.GetAsyncResult(key);
             var bookResult = JsonConvert.DeserializeObject<List<BookResponse>>(result).FirstOrDefault();
             return bookResult.id;
         }
 
-        public ConfirmResponse GetConfirmResult(string onlineId)
+        public string GetConfirmResult(string onlineId)
         {
             var client = new Client();
             var key = client.PostConfirm(onlineId);
             var result = client.GetAsyncResult(key);
             var confirmResponse = JsonConvert.DeserializeObject<List<ConfirmResponse>>(result).FirstOrDefault();
-            return confirmResponse;
+            return confirmResponse.id;
         }
 
-        public ConfirmResponse GetTicket()
+        public string GetDownloadResult(string onlineId)
+        {
+            var client = new Client();
+            var key = client.GetDownload(onlineId);
+            var result = client.GetAsyncResult(key);
+            return result;
+        }
+
+        public string GetTicket()
         {
             var bookId = GetBookingKey();
             var onlineOrderId = GetBookingResult(bookId);
-
-
-            return GetConfirmResult(onlineOrderId);
+            var confirmId = GetConfirmResult(onlineOrderId);
+            return GetDownloadResult(confirmId);
         }
     }
 }
