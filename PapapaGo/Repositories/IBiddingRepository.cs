@@ -13,5 +13,7 @@ namespace PapapaGo.Repositories
         Task<List<Bidding>> GetBiddingsAsync(string name);
 
         Task<int> CreateBiddingAsync(Bidding bidding);
+
+        Task<bool> UpdateBiddingAsync(Bidding bidding);
     }
 }
