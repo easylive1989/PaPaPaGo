@@ -9,17 +9,27 @@ namespace PapapaGo.Sample
 {
     public class Client
     {
-        public void GetSearch()
+        public string GetAsyncResult(string async)
         {
-            var searchReqeust = new SearchRequest
-            {
-                StartStationCode = "ST_EZVVG1X5",
-                DestinationStationCode = "ST_D8NNN9ZK",
-                StartTime = DateTime.Now.AddDays(20),
-                NumberOfAdult = 1,
-                NumberOfChildren = 0
-            };
+            var aysncrequest = JsonConvert.DeserializeObject<AsyncRequest>(async);
 
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, aysncrequest);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+
+            var request = new RestRequest($"/api/v2/async_results/{aysncrequest.GetURL()}", Method.GET);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            var response = client.Get(request);
+            return response.Content;
+        }
+
+        public string GetSearch(SearchRequest searchReqeust)
+        {
             var dateTime = DateTime.Now.ToUniversalTime();
             var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, searchReqeust);
             var signature = secure.Sign();
@@ -32,7 +42,20 @@ namespace PapapaGo.Sample
             request.AddHeader("Authorization", signature);
 
             var response = client.Get(request);
-            Console.WriteLine(response.Content);
+            return response.Content;
+        }
+
+        public string GetSearch()
+        {
+            var searchReqeust = new SearchRequest
+            {
+                StartStationCode = "ST_EZVVG1X5",
+                DestinationStationCode = "ST_D8NNN9ZK",
+                StartTime = DateTime.Now.AddDays(20),
+                NumberOfAdult = 1,
+                NumberOfChildren = 0
+            };
+            return GetSearch(searchReqeust);
         }
 
         public string PostBook()
@@ -66,8 +89,13 @@ namespace PapapaGo.Sample
 
             var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(sample);
 
+            return PostBook(bookReqeust);
+        }
+
+        public string PostBook(BookRequest bookRequest)
+        {
             var dateTime = DateTime.Now.ToUniversalTime();
-            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, bookReqeust);
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, bookRequest);
             var signature = secure.Sign();
 
             var client = new RestClient(Config.GrailTravelHost);
@@ -78,7 +106,7 @@ namespace PapapaGo.Sample
             request.AddHeader("Authorization", signature);
 
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(bookReqeust);
+            request.AddBody(bookRequest);
 
             var response = client.Post(request);
             return response.Content;

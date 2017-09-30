@@ -12,7 +12,10 @@ namespace ApiTest
         private static void Main(string[] args)
         {
             var client = new Client();
-            Console.WriteLine(client.PostBook());
+            var bookResult = client.PostBook();
+            Console.WriteLine(bookResult);
+            Console.WriteLine(client.GetAsyncResult(bookResult));
+
             Console.ReadLine();
         }
     }

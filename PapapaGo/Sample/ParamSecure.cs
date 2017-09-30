@@ -33,7 +33,7 @@ namespace PapapaGo.Sample
             var sortedSources = new SortedDictionary<string, string>(sources);
 
             var input = string.Join("", sortedSources.Select(x => string.Format("{0}={1}", x.Key, x.Value)).ToList());
-            Console.WriteLine(input);
+            Console.WriteLine(input + this.Secret);
             using (MD5 md5Hash = MD5.Create())
             {
                 var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input + this.Secret));
