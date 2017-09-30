@@ -1,5 +1,8 @@
 # PaPaPaGo  
-[![AppVeyor branch](https://img.shields.io/appveyor/ci/easylive1989/PaPaPaGo/master.svg)](https://ci.appveyor.com/project/easylive1989/PaPaPaGo/branch/master)
+
+[https://ci.appveyor.com/api/projects/status/9nmm7igxo7lafu2i?svg=true](https://ci.appveyor.com/api/projects/status/9nmm7igxo7lafu2i?svg=true
+)
+
 Lonely Team's product
 
 ---
