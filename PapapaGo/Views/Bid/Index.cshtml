@@ -7,58 +7,71 @@
     <title>Bid Ticket</title>
 </head>
 <body>
-    <div>
-        <form id="bidForm">
-            <table>
-                <tr>
-                    <td>
-                        <label>Name:</label>
-                    </td>
-                    <td>
-                        name
-                    </td>
-                    <td>
-                        From:
-                    </td>
-                    <td>
-                        Roma Termini
-                    </td>
-                    <td>
-                        <button type="submit">2x</button>
-                    </td>
-                <tr>
-                    <td>
-                        <label>Info:</label>
-                    </td>
-                    <td>
-                        info
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button type="submit">5x</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Price:</label>
-                    </td>
-                    <td>
-                        price
-                    </td>
-                    <td>
-                        To:
-                    </td>
-                    <td>
-                        Milano Centrale
-                    </td>
-                    <td>
-                        <button type="submit">10x</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+<div>
+    <form id="bidForm">
+        <table>
+            <tr>
+            <td>
+                <label>Name:</label>
+            </td>
+            <td>
+                name
+            </td>
+            <td>
+                From:
+            </td>
+            <td>
+                Roma Termini
+            </td>
+            <td>
+                <button >2x</button>
+            </td>
+            <tr>
+                <td>
+                    <label>Info:</label>
+                </td>
+                <td>
+                    info
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button >5x</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Price:</label>
+                </td>
+                <td>
+                    price
+                </td>
+                <td>
+                    To:
+                </td>
+                <td>
+                    Milano Centrale
+                </td>
+                <td>
+                    <button onclick="bidConfirm()">10x</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-    </div>
+</div>
+    
+<script>
+    function bidConfirm() {
+        if(confirm("Sure?"))
+        {
+            alert("Ticket Info");
+        }
+        else
+        {
+        }
+    }
+    
+</script>
 </body>
 </html>
