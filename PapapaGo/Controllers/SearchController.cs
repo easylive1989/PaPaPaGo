@@ -33,7 +33,7 @@ namespace PapapaGo.Controllers
             }
             if (!result.Contains("not ready")) return View();
 
-            var searchResult = JsonConvert.DeserializeObject<List<RootObject>>(result).FirstOrDefault();
+            var searchResult = JsonConvert.DeserializeObject<List<SearchResponse>>(result).FirstOrDefault();
 
             return View(searchResult);
         }

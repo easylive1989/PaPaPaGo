@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PapapaGo.Models
 {
-    public class BookResponse
+    public class BookResponse : BaseResponse
     {
         public string id { get; set; }
         public Railway railway { get; set; }
