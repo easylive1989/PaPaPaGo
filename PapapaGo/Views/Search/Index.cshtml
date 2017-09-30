@@ -1,7 +1,7 @@
-﻿@model  PapapaGo.Models.RootObject
+﻿@model  PapapaGo.Models.SearchResponse
 @{
     ViewBag.Title = "title";
 }
 
 <h2>Search</h2>
-<p>@Model.railway.code</p>
+<p>@Model.solutions[0].sections[0].offers[0].services[0].booking_code</p>
