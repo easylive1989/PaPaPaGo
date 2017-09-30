@@ -10,7 +10,7 @@ namespace PapapaGo.Repositories
 
         Task<Booking> GetBookingAsync(string passport, string bookingCode);
 
-        Task<Booking> GetBookkingAsync(string orderId);
+        Task<Booking> GetBookingAsync(string orderId);
 
         Task<int> CreateBookingAsync(Booking booking);
     }
