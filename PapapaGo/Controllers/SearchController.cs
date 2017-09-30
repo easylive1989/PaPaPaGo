@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using PapapaGo.Models;
 using PapapaGo.Models.Search;
 using PapapaGo.Sample;
 
@@ -32,13 +31,12 @@ namespace PapapaGo.Controllers
                     break;
                 Thread.Sleep(1000);
             }
-            if (!result.Contains("not ready")) return View();
+            if (!result.Contains("not ready"))
+                return View();
 
             var searchResult = JsonConvert.DeserializeObject<List<SearchResponse>>(result).FirstOrDefault();
 
             return View(searchResult);
         }
-
-
     }
 }

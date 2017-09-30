@@ -1,4 +1,5 @@
-# PaPaPaGo
+# PaPaPaGo  
+[![AppVeyor branch](https://img.shields.io/appveyor/ci/easylive1989/PaPaPaGo/master.svg)](https://ci.appveyor.com/project/easylive1989/PaPaPaGo/branch/master)
 Lonely Team's product
 
 ---

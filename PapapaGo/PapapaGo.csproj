@@ -142,6 +142,8 @@
     <Compile Include="Repositories\IContactRepository.cs" />
     <Compile Include="Repositories\IPassengerRepository.cs" />
     <Compile Include="Repositories\PassengerRepository.cs" />
+    <Compile Include="Repositories\IBookingRepository.cs" />
+    <Compile Include="Repositories\BookingRepository.cs" />
     <Compile Include="Sample\BookRequest.cs" />
     <Compile Include="Sample\Config.cs" />
     <Compile Include="Sample\ParamSecure.cs" />
