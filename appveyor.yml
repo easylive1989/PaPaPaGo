@@ -5,6 +5,8 @@ branches:
     - master
 before_build:
   - nuget restore
+  
+build: on
 build:
   publish_wap: true
   verbosity: minimal
