@@ -8,7 +8,13 @@ namespace PapapaGo.Models.Bidding
     [Table("bidding")]
     public class Bidding
     {
-        public int Amount { get; set; }
+        private decimal _amount;
+
+        public decimal Amount
+        {
+            get { return _amount / 100; }
+            set => _amount = value;
+        }
 
         public string BookingCode { get; set; }
 
@@ -17,7 +23,7 @@ namespace PapapaGo.Models.Bidding
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
-        public int DisplayAmount
+        public decimal DisplayAmount
         {
             get
             {
@@ -41,7 +47,7 @@ namespace PapapaGo.Models.Bidding
         {
             get
             {
-                return new decimal(Multiple * Amount) / 10;
+                return (Multiple * Amount) / 10;
             }
         }
 
