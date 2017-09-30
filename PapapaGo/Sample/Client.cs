@@ -37,6 +37,23 @@ namespace PapapaGo.Sample
             return response;
         }
 
+        public string GetDownload(ConfirmRequest downloadReqeust)
+        {
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, downloadReqeust);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+            Console.WriteLine(downloadReqeust.GetURL());
+            var request = new RestRequest($"/v2/online_orders/{downloadReqeust.online_order_id}/online_tickets", Method.GET);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            var response = client.Get(request);
+            return response.Content;
+        }
+
         public string GetSearch(SearchRequest searchReqeust)
         {
             var dateTime = DateTime.Now.ToUniversalTime();
