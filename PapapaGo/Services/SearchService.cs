@@ -48,7 +48,8 @@ namespace PapapaGo.Services
                 TicketJson = tickets,
                 Link = _model.Link,
                 BookingCode = _response.order.id,
-                IsSoldout = false
+                IsSoldout = false,
+                TrainTime = _response.order.departure.ToString("yyyy/MM/dd HH:mm:ss")
             });
 
             return tickets;
