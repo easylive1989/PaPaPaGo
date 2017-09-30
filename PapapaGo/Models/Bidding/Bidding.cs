@@ -1,10 +1,13 @@
 ﻿using System;
+using Dapper;
 using Newtonsoft.Json;
 
 namespace PapapaGo.Models.Bidding
 {
+    [Table("bidding")]
     public class Bidding
     {
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string From { get; set; }

@@ -47,7 +47,8 @@ namespace PapapaGo.Services
                 CreatedTime = DateTime.Now,
                 TicketJson = tickets,
                 Link = _model.Link,
-                BookingCode = _response.order.id
+                BookingCode = _response.order.id,
+                IsSoldout = false
             });
 
             return tickets;
