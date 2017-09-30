@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Dapper;
 using Newtonsoft.Json;
 
 namespace PapapaGo.Sample
@@ -18,6 +19,7 @@ namespace PapapaGo.Sample
         public List<string> sections { get; set; }
     }
 
+    [Table("contact")]
     public class Contact
     {
         public string address { get; set; }
@@ -27,6 +29,7 @@ namespace PapapaGo.Sample
         public string postcode { get; set; }
     }
 
+    [Table("passender")]
     public class Passenger
     {
         public string birthdate { get; set; }
