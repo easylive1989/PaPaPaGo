@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using PapapaGo.Services;
 
 namespace PapapaGo.Controllers
 {
@@ -7,7 +8,9 @@ namespace PapapaGo.Controllers
         // GET: Bid
         public ActionResult Index()
         {
-            return View();
+            var bidService = new BidService();
+            var biddingTickets = bidService.GetBidInfo();
+            return View(biddingTickets);
         }
     }
 }

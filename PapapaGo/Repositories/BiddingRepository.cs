@@ -7,7 +7,7 @@ namespace PapapaGo.Repositories
 {
     public class BiddingRepository : BaseRepository, IBiddingRepository
     {
-        protected BiddingRepository(string connectionString) : base(connectionString)
+        public BiddingRepository(string connectionString) : base(connectionString)
         {
         }
 

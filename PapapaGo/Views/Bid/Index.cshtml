@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model List<PapapaGo.Models.Bidding.Bidding>
 
 <!DOCTYPE html>
 
@@ -11,49 +11,41 @@
     <h3>競標</h3>
     <form id="bidForm">
         <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label class="control-label">
-                            <i class="glyphicon glyphicon-user"></i>Seafood
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-5 col-md-offset-1">
-                        <div class="form-group">
-                            <label>Info：紫衣</label>
-                        </div>
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="panel-heading">
                         <div class="form-inline">
                             <div class="form-group">
-                                <label>啟程站：柏林</label>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <i class="glyphicon glyphicon-arrow-right"></i>
-                                    終點站：慕尼黑
+                                <label class="control-label">
+                                    <i class="glyphicon glyphicon-user"></i>@item.Name
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group text-left">
-                            <label class="control-label">價格：2000 €</label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label>啟程站：@item.From</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="glyphicon glyphicon-arrow-right"></i>
+                                            終點站：@item.To
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group text-left">
+                                    <label class="control-label">價格：@item.Amount</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4 text-left">
-                        <div class="form-group">
-                            <button>2x</button>
-                        </div>
-                        <div class="form-group">
-                            <button>5x</button>
-                        </div>
-                        <div class="form-group">
-                                <button onclick="bidConfirm()">10x</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
+            }
+
         </div>
     </form>
     <script>
