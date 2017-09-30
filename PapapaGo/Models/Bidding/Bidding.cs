@@ -13,6 +13,7 @@ namespace PapapaGo.Models.Bidding
 
         [IgnoreUpdate]
         [IgnoreInsert]
+        [IgnoreSelect]
         public int DisplayAmount
         {
             get
