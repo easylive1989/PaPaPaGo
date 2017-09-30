@@ -9,65 +9,75 @@
 </head>
 <body>
     <h3>競標</h3>
-    <form id="bidForm">
-        <div class="panel panel-info">
-            @{
-                foreach (var item in Model)
-                {
-                    var imgSrc = "http://graph.facebook.com/" + item.Link + "/picture?type=normal";
-                    <div class="panel-heading">
-                        <div>
-                            <img src="@imgSrc"/>
-                        </div>
+    <div class="panel panel-info">
+        @{
+            foreach (var item in Model)
+            {
+                var imgSrc = "http://graph.facebook.com/" + item.Link + "/picture?type=normal";
+                <div class="panel-heading">
+                    <div>
+                        <img src="@imgSrc"/>
+                    </div>
 
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <label class="control-label">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    @item.Name
-                                </label>
-                            </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <i class="glyphicon glyphicon-user"></i>
+                                @item.Name
+                            </label>
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-5 col-md-offset-1">
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <label>啟程站：@item.From</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            <i class="glyphicon glyphicon-arrow-right"></i>
-                                            終點站：@item.To
-                                        </label>
-                                    </div>
-                                    <br/>
-                                    <div class="form-group">
-                                        <label>
-                                            車票時間：@item.TrainTime
-                                        </label>
-                                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label>啟程站：@item.From</label>
                                 </div>
-                                <div class="form-group text-left">
-                                    <label class="control-label">原始價格：@item.Amount </label><br/>
-                                    <label class="control-label">競標倍數：@item.Multiple </label><br />
-                                    <label class="control-label">實際金額：@item.DisplayAmount </label><br />
+                                <div class="form-group">
+                                    <label>
+                                        <i class="glyphicon glyphicon-arrow-right"></i>
+                                        終點站：@item.To
+                                    </label>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label>
+                                        車票時間：@item.TrainTime
+                                    </label>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
-                                <a href="@Url.Action("BuyTicket", "Bid",new{id = @item.Id})" class="btn btn-sm btn-primary">Buy</a>
+                            <div class="form-group text-left">
+                                <label class="control-label">原始價格：@item.Amount </label><br/>
+                                <label class="control-label">競標倍數：@item.Multiple </label><br />
+                                <label class="control-label">實際金額：@item.DisplayAmount </label><br />
                             </div>
                         </div>
+                        <div class="col-sm-2">
+                            <button onclick="bidConfirm(@item.Id)" class="btn btn-sm btn-primary">Buy</button>
+                        </div>
                     </div>
-                }
+                </div>
             }
-        </div>
-    </form>
+        }
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        function bidConfirm() {
+        function bidConfirm(ticketId) {
+            console.log("start");
             if (confirm("Sure?")) {
-                alert("Ticket Info");
+                $.ajax({
+                    url: "/Bid/BuyTicket",
+                    data: { id: ticketId },
+                    success: function () {
+                        window.location.reload();
+                        alert("Success");
+                    },
+                    error: function(){
+                        alert("Fail");
+                    }
+                });
             }
             else {
             }
