@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using PapapaGo.Sample;
 
@@ -12,9 +13,15 @@ namespace ApiTest
         private static void Main(string[] args)
         {
             var client = new Client();
-            var bookResult = client.PostBook();
-            Console.WriteLine(bookResult);
-            Console.WriteLine(client.GetAsyncResult(bookResult));
+            var result = client.GetSearch();
+            Console.WriteLine(result);
+            Thread.Sleep(10000);
+            Console.WriteLine(client.GetAsyncResult(result));
+
+            result = client.PostConfirm();
+            Console.WriteLine(result);
+            Thread.Sleep(10000);
+            Console.WriteLine(client.GetAsyncResult(result));
 
             Console.ReadLine();
         }

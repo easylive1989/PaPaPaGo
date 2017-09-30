@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -35,7 +32,7 @@ namespace PapapaGo.Sample
             var signature = secure.Sign();
 
             var client = new RestClient(Config.GrailTravelHost);
-
+            Console.WriteLine(searchReqeust.GetURL());
             var request = new RestRequest($"/api/v2/online_solutions?{searchReqeust.GetURL()}", Method.GET);
             request.AddHeader("From", Config.ApiKey);
             request.AddHeader("Date", dateTime.ToString("r"));
@@ -49,8 +46,8 @@ namespace PapapaGo.Sample
         {
             var searchReqeust = new SearchRequest
             {
-                StartStationCode = "ST_EZVVG1X5",
-                DestinationStationCode = "ST_D8NNN9ZK",
+                StartStationCode = "ST_D8NNN9ZK",
+                DestinationStationCode = "ST_EZVVG1X5",
                 StartTime = DateTime.Now.AddDays(20),
                 NumberOfAdult = 1,
                 NumberOfChildren = 0
@@ -81,7 +78,7 @@ namespace PapapaGo.Sample
       }
     ],
     'sections': [
-      'P_4SDF5P'
+      'P_1FE6MA9'
     ],
     'seat_reserved': true
   }
@@ -107,6 +104,35 @@ namespace PapapaGo.Sample
 
             request.RequestFormat = DataFormat.Json;
             request.AddBody(bookRequest);
+
+            var response = client.Post(request);
+            return response.Content;
+        }
+
+        public string PostConfirm()
+        {
+            ConfirmRequest confirmReqeust = new ConfirmRequest
+            {
+                online_order_id = "OD_Q2M1KDZG3"
+            };
+            return PostConfirm(confirmReqeust);
+        }
+
+        public string PostConfirm(ConfirmRequest confirmReqeust)
+        {
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, confirmReqeust);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+            Console.WriteLine(confirmReqeust.GetURL());
+            var request = new RestRequest($"/api/v2/online_orders/{confirmReqeust.online_order_id}/online_confirmations", Method.POST);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(confirmReqeust);
 
             var response = client.Post(request);
             return response.Content;
