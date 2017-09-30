@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace PapapaGo.Models
 {
-    class SearchResult
-    {
-
-    }
     public class Railway
     {
         public string code { get; set; }
@@ -17,20 +13,20 @@ namespace PapapaGo.Models
 
     public class From
     {
-        public string RailwayCode { get; set; }
-        public string RailwayName { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
     }
 
     public class To
     {
-        public string RailwayCode { get; set; }
-        public string RailwayName { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
     }
 
     public class Duration
     {
-        public int Hour { get; set; }
-        public int Minutes { get; set; }
+        public int hour { get; set; }
+        public int minutes { get; set; }
     }
 
     public class Available

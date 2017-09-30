@@ -1,5 +1,9 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using PapapaGo.Models;
 using PapapaGo.Sample;
 
 namespace PapapaGo.Controllers
@@ -27,9 +31,11 @@ namespace PapapaGo.Controllers
                     break;
                 Thread.Sleep(1000);
             }
-            ViewBag.Content = result;
+            if (!result.Contains("not ready")) return View();
 
-            return View();
+            var searchResult = JsonConvert.DeserializeObject<List<RootObject>>(result).FirstOrDefault();
+
+            return View(searchResult);
         }
 
 
