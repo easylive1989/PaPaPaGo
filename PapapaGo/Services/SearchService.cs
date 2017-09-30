@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using PapapaGo.Models;
+using PapapaGo.Models.Search;
 using PapapaGo.Sample;
 
 namespace PapapaGo.Services
