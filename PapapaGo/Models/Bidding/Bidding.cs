@@ -17,13 +17,7 @@ namespace PapapaGo.Models.Bidding
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
-        public int DisplayAmount
-        {
-            get
-            {
-                return Multiple * Amount;
-            }
-        }
+        public int DisplayAmount => Multiple * Amount;
 
         public string From { get; set; }
 
@@ -37,13 +31,7 @@ namespace PapapaGo.Models.Bidding
         [IgnoreUpdate]
         [IgnoreInsert]
         [IgnoreSelect]
-        public decimal MakeMoney
-        {
-            get
-            {
-                return new decimal(Multiple * Amount) / 10;
-            }
-        }
+        public decimal MakeMoney => new decimal(Multiple * Amount) / 10;
 
         public int Multiple { get; set; }
         public string Name { get; set; }
