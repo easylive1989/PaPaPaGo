@@ -61,13 +61,13 @@ namespace PapapaGo.Sample
                 StartStationCode = "ST_D8NNN9ZK",
                 DestinationStationCode = "ST_EZVVG1X5",
                 StartTime = DateTime.Now.AddDays(20),
-                NumberOfAdult = 1,
+                NumberOfAdult = 2,
                 NumberOfChildren = 0
             };
             return GetSearch(searchReqeust);
         }
 
-        public string PostBook()
+        public string PostBook(string bookingID = "P_1FE6MA9")
         {
             var sample = @"
  {
@@ -86,17 +86,26 @@ namespace PapapaGo.Sample
         'passport': 'A123456',
         'email': 'x@a.cn',
         'phone': '15000367081',
-        'gender': 'male'
+        'gender': 'male',
+      },
+        {
+        'last_name': 'zhang',
+        'first_name': 'san',
+        'birthdate': '1986-09-01',
+        'passport': 'A123456',
+        'email': 'x@a.cn',
+        'phone': '15000367081',
+        'gender': 'male',
       }
     ],
     'sections': [
-      'P_1FE6MA9'
+      '{0}'
     ],
     'seat_reserved': true
   }
 ";
 
-            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(sample);
+            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(string.Format(sample,bookingID));
 
             return PostBook(bookReqeust);
         }
@@ -121,11 +130,11 @@ namespace PapapaGo.Sample
             return response.Content;
         }
 
-        public string PostConfirm()
+        public string PostConfirm(string onlineId = "OD_Q2M1KDZG3")
         {
             ConfirmRequest confirmReqeust = new ConfirmRequest
             {
-                online_order_id = "OD_Q2M1KDZG3"
+                online_order_id = onlineId
             };
             return PostConfirm(confirmReqeust);
         }
