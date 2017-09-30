@@ -1,8 +1,6 @@
 version: 1.0.{build}
-
-before_build:
-  - nuget restor
-  
+image: Visual Studio 2017
 build:
-  publish_wap: true
   verbosity: minimal
+test_script:
+- cmd: vstest.console /logger:Appveyor <assembly> PapapaGo.Tests
