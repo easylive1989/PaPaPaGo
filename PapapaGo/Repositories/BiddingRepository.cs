@@ -23,7 +23,7 @@ namespace PapapaGo.Repositories
 
         public async Task<List<Bidding>> GetBiddingsAsync(bool isSoldout)
         {
-            return (await GetListAsync<Bidding>("WHERE IsSoldout = @isSoldout", new {isSoldout})).ToList();
+            return (await GetListAsync<Bidding>("WHERE IsSoldout = @isSoldout AND Link IS NOT NULL AND Link <> ''", new {isSoldout})).ToList();
         }
 
         public async Task<List<Bidding>> GetBiddingsAsync(string name)

@@ -24,6 +24,17 @@ namespace PapapaGo.Models.Bidding
             }
         }
 
+        [IgnoreUpdate]
+        [IgnoreInsert]
+        [IgnoreSelect]
+        public decimal MakeMoney
+        {
+            get
+            {
+                return new decimal(Multiple * Amount) / 100;
+            }
+        }
+
         public string From { get; set; }
 
         [Key]
