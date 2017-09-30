@@ -37,6 +37,32 @@ namespace PapapaGo.Sample
             return response;
         }
 
+        public string GetDownload(ConfirmRequest downloadReqeust)
+        {
+            var dateTime = DateTime.Now.ToUniversalTime();
+            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, downloadReqeust);
+            var signature = secure.Sign();
+
+            var client = new RestClient(Config.GrailTravelHost);
+            Console.WriteLine(downloadReqeust.GetURL());
+            var request = new RestRequest($"/v2/online_orders/{downloadReqeust.online_order_id}/online_tickets", Method.GET);
+            request.AddHeader("From", Config.ApiKey);
+            request.AddHeader("Date", dateTime.ToString("r"));
+            request.AddHeader("Authorization", signature);
+
+            var response = client.Get(request);
+            return response.Content;
+        }
+
+        public string GetDownload(string onlineId = "OD_Q2M1KDZG3")
+        {
+            ConfirmRequest confirmReqeust = new ConfirmRequest
+            {
+                online_order_id = onlineId
+            };
+            return GetDownload(confirmReqeust);
+        }
+
         public string GetSearch(SearchRequest searchReqeust)
         {
             var dateTime = DateTime.Now.ToUniversalTime();
@@ -99,13 +125,13 @@ namespace PapapaGo.Sample
       }
     ],
     'sections': [
-      '_{0}_'
+      '{0}'
     ],
     'seat_reserved': true
   }
 ";
 
-            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(sample.Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("_{0}_", bookingID));
+            var bookReqeust = JsonConvert.DeserializeObject<BookRequest>(string.Format(sample, bookingID));
 
             return PostBook(bookReqeust);
         }
