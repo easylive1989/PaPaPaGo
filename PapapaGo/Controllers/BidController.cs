@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using PapapaGo.Factories;
 using PapapaGo.Services;
 
@@ -11,6 +9,13 @@ namespace PapapaGo.Controllers
     {
         private readonly BidService _BidService = new BidService(RepositoryFactory.GetBiddingRepository());
 
+        public ActionResult BuyTicket(int id)
+        {
+            var isSuccess = _BidService.BuyTicket(id);
+            var biddingTickets = _BidService.GetBidInfo();
+            return View("Index", biddingTickets);
+        }
+
         // GET: Bid
         public ActionResult Index(string oriSelect, string desSelect, string username, string datetime, string fblink, string priceSelect)
         {
@@ -18,11 +23,10 @@ namespace PapapaGo.Controllers
             return View(biddingTickets);
         }
 
-        public string BuyTicket(int id)
+        public ActionResult SoldOutReport()
         {
-            var biddingTickets = _BidService.GetBidInfo();
-            _BidService.BuyTicket(id);
-            return biddingTickets.Where(x=>x.Id == id).Select(y=>y.Tickets.Links[1]).FirstOrDefault();
+            var biddingTickets = _BidService.GetSoldOutBidInfo();
+            return View(biddingTickets);
         }
     }
 }
