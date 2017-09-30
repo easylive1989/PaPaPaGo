@@ -15,10 +15,11 @@ namespace PapapaGo.Controllers
             return View(biddingTickets);
         }
 
-        public void BuyTicket(int id)
+        public ActionResult BuyTicket(int id)
         {
-            var isSuccess = _BidService.BuyTicket(id);
-
+            _BidService.BuyTicket(id);
+            var biddingTickets = _BidService.GetBidInfo();
+            return View("Index", biddingTickets);
         }
     }
 }
