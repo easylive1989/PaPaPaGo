@@ -141,6 +141,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseResponse.cs" />
+    <Compile Include="Models\Bidding\Bidding.cs" />
     <Compile Include="Models\Book\BookResponse.cs" />
     <Compile Include="Models\Search\Search.cs" />
     <Compile Include="Models\Search\SearchResult.cs" />
@@ -161,8 +162,8 @@
     <Compile Include="Sample\Client.cs" />
     <Compile Include="Sample\RequestBase.cs" />
     <Compile Include="Sample\SearchRequest.cs" />
-    <Compile Include="Services\BidService.cs" />
     <Compile Include="Services\SearchService.cs" />
+	<Compile Include="Services\BidService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
