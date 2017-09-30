@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using PapapaGo.Models.DTO;
+using PapapaGo.Services;
+using System.Web.Mvc;
 
 namespace PapapaGo.Controllers
 {
@@ -7,6 +9,9 @@ namespace PapapaGo.Controllers
         // GET: Result
         public ActionResult BookResult()
         {
+            var service = new SearchService(new SearchModel());
+            ViewBag.id = service.GetTicket();
+
             return View();
         }
     }
