@@ -30,5 +30,10 @@ namespace PapapaGo.Repositories
         {
             return (await InsertAsync(bidding)).GetValueOrDefault();
         }
+
+        public async Task<bool> UpdateBiddingAsync(Bidding bidding)
+        {
+            return await UpdateAsync(bidding) > 0;
+        }
     }
 }
