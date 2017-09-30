@@ -7,10 +7,16 @@ namespace PapapaGo.Services
 {
     public class BidService
     {
+        private readonly BiddingRepository _BiddingRepository = new BiddingRepository(Config.DbConntectionString);
         public List<Bidding> GetBidInfo()
         {
-            var bidRepo = new BiddingRepository(Config.DbConntectionString);
-            return bidRepo.GetBiddingsAsync(false).Result;
+            return _BiddingRepository.GetBiddingsAsync(false).Result;
+        }
+
+        public bool BuyTicket(int id)
+        {
+            var ticketInfo = _BiddingRepository.GetBiddingsAsync(id).Result;
+            return _BiddingRepository.UpdateBiddingAsync(ticketInfo).Result;
         }
     }
 }

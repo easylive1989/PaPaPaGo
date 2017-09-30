@@ -5,12 +5,17 @@ namespace PapapaGo.Controllers
 {
     public class BidController : Controller
     {
+        private BidService _BidService = new BidService();
+
         // GET: Bid
         public ActionResult Index()
         {
-            var bidService = new BidService();
-            var biddingTickets = bidService.GetBidInfo();
+            var biddingTickets = _BidService.GetBidInfo();
             return View(biddingTickets);
         }
+
+        //public ActionResult BuyTicket()
+        //{
+        //}
     }
 }
