@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web.Mvc;
-using PapapaGo.Models.Bidding;
 using PapapaGo.Services;
 
 namespace PapapaGo.Controllers
@@ -11,17 +9,16 @@ namespace PapapaGo.Controllers
         private BidService _BidService = new BidService();
 
         // GET: Bid
-        public ActionResult Index()
+        public ActionResult Index(string oriSelect, string desSelect, string username, string datetime, string fblink, string priceSelect)
         {
             var biddingTickets = _BidService.GetBidInfo();
             return View(biddingTickets);
         }
 
-        public ActionResult BuyTicket(int id)
+        public void BuyTicket(int id)
         {
-            _BidService.BuyTicket(id);
-            var biddingTickets = _BidService.GetBidInfo();
-            return View("Index",biddingTickets);
+            var isSuccess = _BidService.BuyTicket(id);
+
         }
     }
 }
