@@ -6,9 +6,16 @@
 <head>
     <title>Bid Ticket</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        .demo {
+            padding: 25px;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body style="background-image:url(http://s.hswstatic.com/gif/money-world-orig.jpg)">
-    <table style="background-color:mediumpurple;font-size:xx-large;color:white"  width="100%" >
+    <table style="background-color:mediumpurple;font-size:xx-large;color:white" width="100%">
         <tr>
             <td>Report</td>
         </tr>
@@ -18,9 +25,9 @@
     </table>
 
     @*<h3 style="color:white;">Report</h3>
-    <h4 style="color:white;">實賺總金額: @Model.Sum(x => x.MakeMoney)</h4>*@
+        <h4 style="color:white;">實賺總金額: @Model.Sum(x => x.MakeMoney)</h4>*@
     <form id="bidForm">
-        <div class="panel panel-info">
+        <div class="panel panel-info demo">
             @{
                 foreach (var item in Model)
                 {
