@@ -4,6 +4,7 @@ using System.Threading;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using PapapaGo.Models;
+using PapapaGo.Models.Search;
 using PapapaGo.Sample;
 
 namespace PapapaGo.Controllers
