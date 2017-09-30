@@ -101,7 +101,7 @@ namespace PapapaGo.Models.Book
         public From2 from { get; set; }
         public string id { get; set; }
         public Price price { get; set; }
-        public To2 to { get; set; }
+        public To to { get; set; }
     }
 
     public class TicketPrice
@@ -111,12 +111,6 @@ namespace PapapaGo.Models.Book
     }
 
     public class To
-    {
-        public string code { get; set; }
-        public string name { get; set; }
-    }
-
-    public class To2
     {
         public string code { get; set; }
         public string name { get; set; }
