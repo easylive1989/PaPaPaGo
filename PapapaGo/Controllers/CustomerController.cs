@@ -26,15 +26,22 @@ namespace PapapaGo.Controllers
             return View();
         }
 
-        public ActionResult BookResult(string oriSelect, string desSelect, string username, DateTime datetime, string fblink, int priceSelect)
+        /// <summary>
+        /// 一般顧客訂票
+        /// </summary>
+        /// <param name="oriSelect"></param>
+        /// <param name="desSelect"></param>
+        /// <param name="username"></param>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public ActionResult BookResult(string oriSelect, string desSelect, string username, DateTime datetime)
         {
             var searchModel = new SearchModel();
             searchModel.From = oriSelect;
             searchModel.To = desSelect;
             searchModel.Name = username;
             searchModel.Time = datetime;
-            searchModel.Link = fblink;
-            searchModel.Multiple = priceSelect;
+            searchModel.Multiple = 1;
             var service = new SearchService(searchModel);
             ViewBag.Id = service.GetTicket();
             return View();
