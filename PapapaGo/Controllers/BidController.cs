@@ -14,8 +14,10 @@ namespace PapapaGo.Controllers
             return View(biddingTickets);
         }
 
-        //public ActionResult BuyTicket()
-        //{
-        //}
+        public void BuyTicket(int id)
+        {
+            var isSuccess = _BidService.BuyTicket(id);
+
+        }
     }
 }
