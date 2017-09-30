@@ -20,7 +20,14 @@ namespace PapapaGo.Sample
                     var authAttr = attr as JsonPropertyAttribute;
                     if (authAttr != null)
                     {
-                        dic[authAttr.PropertyName] = prop.GetValue(this).ToString().ToLower();
+                        if (authAttr.PropertyName == "seat_reserved")
+                        {
+                            dic[authAttr.PropertyName] = prop.GetValue(this).ToString().ToLower();
+                        }
+                        else
+                        {
+                            dic[authAttr.PropertyName] = prop.GetValue(this).ToString();
+                        }
                     }
                 }
             }

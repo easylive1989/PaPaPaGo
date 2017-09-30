@@ -31,17 +31,26 @@ namespace PapapaGo.Sample
         [JsonProperty("child")]
         public int NumberOfChildren { get; set; }
 
+        [JsonProperty("date")]
+        public string StartDateString
+        {
+            get
+            {
+                return this.StartTime.ToString("yyyy-MM-dd");
+            }
+        }
+
         [JsonProperty("from")]
         public string StartStationCode { get; set; }
 
         public DateTime StartTime { get; set; }
 
-        [JsonProperty("date")]
+        [JsonProperty("time")]
         public string StartTimeString
         {
             get
             {
-                return this.StartTime.ToString("yyyy-MM-dd HH:mm");
+                return this.StartTime.ToString("HH:mm");
             }
         }
     }
