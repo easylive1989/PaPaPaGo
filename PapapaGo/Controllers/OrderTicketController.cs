@@ -19,16 +19,20 @@ namespace PapapaGo.Controllers
             return View();
         }
 
-        public bool Book()
+        public ActionResult BookResult()
         {
             var service = new SearchService();
             var key = service.GetBookingKey();
+            var id = service.GetBookingResult(key);
+            var model = service.GetConfirmResult(id);
+
+            
             //var client = new Client();
             //var resp = client.PostBook();
             //resp = client.GetAsyncResult(resp);
             //var bookReqeust = JsonConvert.DeserializeObject<BookResponse>(resp);
             //ViewBag.Price = bookReqeust.tickets[0].price.cents;
-            return true;
+            return View(model);
         }
     }
 }
