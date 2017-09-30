@@ -15,5 +15,10 @@ namespace PapapaGo.Repositories
         {
             return (await GetListAsync<Contact>("WHERE 1")).ToList();
         }
+
+        public async Task<Contact> GetContactAsync(string email)
+        {
+            return (await GetListAsync<Contact>("WHERE email = @email", new {email})).FirstOrDefault();
+        }
     }
 }

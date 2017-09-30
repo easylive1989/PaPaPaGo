@@ -7,5 +7,6 @@ namespace PapapaGo.Repositories
     public interface IContactRepository
     {
         Task<List<Contact>> GetContactsAsync();
+        Task<Contact> GetContactAsync(string email);
     }
 }
