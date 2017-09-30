@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Dapper;
 using Newtonsoft.Json;
 
@@ -45,7 +46,7 @@ namespace PapapaGo.Models.Bidding
         public int Multiple { get; set; }
         public string Name { get; set; }
         public string TicketJson { get; set; }
-        public Ticket Tickets => JsonConvert.DeserializeObject<Ticket>(TicketJson.Replace("\n", string.Empty));
+        public Ticket Tickets => new Ticket{Links = JsonConvert.DeserializeObject<List<string>>(TicketJson)};
         public string To { get; set; }
         public string TrainTime { get; set; }
     }

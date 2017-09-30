@@ -21,6 +21,7 @@ namespace PapapaGo.Services
         public bool BuyTicket(int id)
         {
             var ticketInfo = _BiddingRepository.GetBiddingsAsync(id).Result;
+            ticketInfo.IsSoldout = true;
             return _BiddingRepository.UpdateBiddingAsync(ticketInfo).Result;
         }
     }
