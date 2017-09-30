@@ -1,4 +1,8 @@
 version: 1.0.{build}
+
+before_build:
+  - nuget restor
+  
 build:
   publish_wap: true
   verbosity: minimal
