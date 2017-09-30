@@ -6,6 +6,8 @@ namespace PapapaGo.Repositories
 {
     public interface IBiddingRepository
     {
+        Task<List<Bidding>> GetBiddingsAsync();
+
         Task<List<Bidding>> GetBiddingsAsync(string name);
 
         Task<int> CreateBiddingAsync(Bidding bidding);
