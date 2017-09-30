@@ -8,5 +8,6 @@ namespace PapapaGo.Repositories
     {
         Task<List<Contact>> GetContactsAsync();
         Task<Contact> GetContactAsync(string email);
+        Task<int> CreateContactAsync(Contact contact);
     }
 }
