@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading;
 using System.Web.Mvc;
 using PapapaGo.Sample;
-using RestSharp;
 
 namespace PapapaGo.Controllers
 {
@@ -13,7 +9,6 @@ namespace PapapaGo.Controllers
         public ActionResult Book()
         {
             var client = new Client();
-
             ViewBag.Content = client.PostBook();
             return View();
         }
@@ -21,29 +16,22 @@ namespace PapapaGo.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            var searchReqeust = new SearchRequest
+            var client = new Client();
+            var key = client.GetSearch();
+            //System.Threading.Thread.Sleep(3000);
+            var result = string.Empty;
+            for (var second = 0; second < 60; second++)
             {
-                StartStationCode = "ST_EZVVG1X5",
-                DestinationStationCode = "ST_D8NNN9ZK",
-                StartTime = DateTime.Now.AddDays(20),
-                NumberOfAdult = 1,
-                NumberOfChildren = 0
-            };
+                result = client.GetAsyncResult(key);
+                if(!result.Contains("not ready"))
+                    break;
+                Thread.Sleep(1000);
+            }
+            ViewBag.Content = result;
 
-            var dateTime = DateTime.Now.ToUniversalTime();
-            var secure = new ParamSecure(Config.Secret, Config.ApiKey, dateTime, searchReqeust);
-            var signature = secure.Sign();
-
-            var client = new RestClient(Config.GrailTravelHost);
-
-            var request = new RestRequest($"/api/v2/online_solutions?{searchReqeust.GetURL()}", Method.GET);
-            request.AddHeader("From", Config.ApiKey);
-            request.AddHeader("Date", dateTime.ToString("r"));
-            request.AddHeader("Authorization", signature);
-
-            var response = client.Get(request);
-            ViewBag.Content = response.Content;
             return View();
         }
+
+
     }
 }
