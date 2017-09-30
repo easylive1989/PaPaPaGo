@@ -26,7 +26,7 @@ namespace PapapaGo.Sample
         public string postcode { get; set; }
     }
 
-    [Table("passender")]
+    [Table("passenger")]
     public class Passenger
     {
         public string birthdate { get; set; }
@@ -36,5 +36,17 @@ namespace PapapaGo.Sample
         public string last_name { get; set; }
         public string passport { get; set; }
         public string phone { get; set; }
+    }
+
+    [Table("booking")]
+    public class Booking
+    {
+        public string email { get; set; }
+        public string first_name { get; set; }
+        public string gender { get; set; }
+        public string last_name { get; set; }
+        public string passport { get; set; }
+        public string booking_code { get; set; }
+        public int booked_seats { get; set; }
     }
 }
