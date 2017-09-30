@@ -20,7 +20,7 @@ namespace PapapaGo.Sample
                     var authAttr = attr as JsonPropertyAttribute;
                     if (authAttr != null)
                     {
-                        dic[authAttr.PropertyName] = prop.GetValue(this).ToString();
+                        dic[authAttr.PropertyName] = prop.GetValue(this).ToString().ToLower();
                     }
                 }
             }

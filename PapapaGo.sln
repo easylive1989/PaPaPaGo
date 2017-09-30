@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapapaGo", "PapapaGo\Papapa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapapaGo.Tests", "PapapaGo.Tests\PapapaGo.Tests.csproj", "{F6D15029-A68E-4992-A36A-FA108AC64F74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{20AE5221-2D2C-4BEE-BB1B-53DB53B05B5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F6D15029-A68E-4992-A36A-FA108AC64F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D15029-A68E-4992-A36A-FA108AC64F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6D15029-A68E-4992-A36A-FA108AC64F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AE5221-2D2C-4BEE-BB1B-53DB53B05B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AE5221-2D2C-4BEE-BB1B-53DB53B05B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AE5221-2D2C-4BEE-BB1B-53DB53B05B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AE5221-2D2C-4BEE-BB1B-53DB53B05B5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

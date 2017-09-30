@@ -8,21 +8,21 @@ namespace PapapaGo.Sample
 {
     public class SearchRequest : RequestBase
     {
-        [JsonProperty("d")]
+        [JsonProperty("to")]
         public string DestinationStationCode { get; set; }
 
-        [JsonProperty("na")]
+        [JsonProperty("adult")]
         public int NumberOfAdult { get; set; }
 
-        [JsonProperty("nc")]
+        [JsonProperty("child")]
         public int NumberOfChildren { get; set; }
 
-        [JsonProperty("s")]
+        [JsonProperty("from")]
         public string StartStationCode { get; set; }
 
         public DateTime StartTime { get; set; }
 
-        [JsonProperty("dt")]
+        [JsonProperty("date")]
         public string StartTimeString
         {
             get
